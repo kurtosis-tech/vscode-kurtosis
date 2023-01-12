@@ -1,71 +1,38 @@
-# kurtosis-plugin README
+# Kurtosis Plugin (Under Development)
 
-This is the README for your extension "kurtosis-plugin". After writing up a brief description, we recommend including the following sections.
+This plugin is under development and currently in order to use this follow the steps below
 
-## Features
+## Setup
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The below steps are temporary, ideally we would like to ingtegrate lsp service with kurtosis using `kurtosis lsp` or similar.  
+It will involve moving `starlark-lsp` to `kurtosis` repo and integrating with `kurtosis cli`
 
-For example if there is an image subfolder under your extension project workspace:
+Until then, this should get the things going.
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Clone this folder
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+2. Go to `starlark-lsp` folder and in it
 
-## Requirements
+    > go install ./...
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+    ( This should create `starlark-lsp` executable and installs it in `$GOPATH/bin`) 
+    
+    *Important*
 
-## Extension Settings
+    This assumes that `GOPATH` is configured - if not then the plugin won't work.  
+    Add the lines below in `bash_profile` or similar file, replace `<username>` with
+    your username.
+    
+    > export GOPATH=/Users/<username>/go   
+      export PATH="${GOPATH}/bin:$PATH"
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Run  
 
-For example:
+1. Open `kurtosis-plugin` folder in `Visual Studio Code`
 
-This extension contributes the following settings:
+2. Press `F5`. This should open a new window and in the title you should see `Extension Development Host`.  
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+3. In the `Extension Development Host` window, you should be able to see plugins capabiltites on `.star` files.
 
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+## Publish
+//TODO
