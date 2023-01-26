@@ -24,11 +24,11 @@ Please follow the setups outlined below to run kurtosis plugin with starlark cod
 ## Debug   
   If `plugin` does not work, check whether vscode has latest path variable. In the main vscode window (where vscode-kurtosis folder is opened), view `DEBUG CONSOLE` and verify `$GOPATH` is defined in $PATH variable like shown below. 
   
-  #### Example image:   
+  #### Example image:
   
-  
+  <img width="1716" alt="Screen Shot 2023-01-26 at 12 29 38 AM" src="https://user-images.githubusercontent.com/15133250/214765520-348b3b64-5027-4f08-adde-b049bdce3094.png">
+ 
   If you do not see `$GOPATH` in the `PATH`, restart the `vs-code`.
-
   You can also check the server logs, by going to `kurtosis_lsp` ouput section in `Extenstion Development Host`, to do so follow the steps below:
 
   1. Open Command Pallete (`Cmd` + `Shift` + `P`)
