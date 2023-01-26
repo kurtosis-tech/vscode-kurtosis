@@ -14,12 +14,6 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "kurtosis-plugin.helloWorld",
-        "title": "Hello World"
-      }
-    ],
     "languages": [
       {
         "id": "starlark",

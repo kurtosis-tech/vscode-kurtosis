@@ -1,53 +1,45 @@
 # Kurtosis Plugin (Under Development)
 
-This plugin is under development and currently in order to use this follow the steps below
-
 ## Setup
 
-The below steps are temporary, ideally we would like to ingtegrate lsp service with kurtosis using `kurtosis lsp` or similar.  
-It will involve moving `starlark-lsp` to `kurtosis` repo and integrating with `kurtosis cli`
+Please follow the setups outlined below to run kurtosis plugin with starlark code. It assumes that you have `go`, `node`, and `npm` already installed.
 
-Until then, this should get the things going.
+1. Add GoPath to your Path  
+  Add the following lines in your `bash_profile` or similar file.
+  > 
+    export GOPATH=/Users/{USER_NAME}/go (where USER_NAME is your username)    
+    export PATH="${GOPATH}/bin:$PATH"
+2. source ~/.bash_profile
+3. cd `vscode-kurtosis`
+4. `npm install .`
+5. cd `starlark-lsp`  
+6. `go install ./...`
 
-1. Clone this folder
+## Run
 
-2. Go to `starlark-lsp` folder and in it
-
-    > go install ./...
-
-    ( This should create `starlark-lsp` executable and installs it in `$GOPATH/bin`) 
-    
-    ### Important
-
-    This assumes that `GOPATH` is configured - if not then the plugin won't work.  
-    Add the lines below in `bash_profile` or similar file, replace `user_name` with
-    your username.
-    
-    > export GOPATH=/Users/user_name/go   
-      export PATH="${GOPATH}/bin:$PATH"    
-      source ~/.bash_profile (or similar)
-
-## Run  
-
-1. Open `kurtosis-plugin` folder in `Visual Studio Code`
+1. Open `vscode-kurtosis` folder in `Visual Studio Code`.   
+2. Press `F5`, and it will open another window titled `Extenstion Development Host` and has the extension capabilites.   
+    Create or open an existing `*.star` files, and you should see the extension in action.
    
-   Check whether env variables in VSCODE, see the updated path:-
-   
-   <img width="1728" alt="Screen Shot 2023-01-19 at 9 49 11 AM" src="https://user-images.githubusercontent.com/15133250/213478971-59d6ca80-2551-48fd-ae0f-04efabbef706.png">
+## Debug   
+  If `plugin` does not work, check whether vscode has latest path variable. In the main vscode window (where vscode-kurtosis folder is opened), view `DEBUG CONSOLE` and verify `$GOPATH` is defined in $PATH variable like shown below. 
+  
+  #### Example image:   
+  
+  
+  If you do not see `$GOPATH` in the `PATH`, restart the `vs-code`.
 
-    If you don't see your PATH being updated, please restart VsCode to read new global path variables.
+  You can also check the server logs, by going to `kurtosis_lsp` ouput section in `Extenstion Development Host`, to do so follow the steps below:
 
-2. Press `F5`. This should open a new window and in the title you should see `Extension Development Host`
-    
-    <img width="1728" alt="Screen Shot 2023-01-19 at 10 19 11 AM" src="https://user-images.githubusercontent.com/15133250/213481201-50d1345a-3b2d-46e6-adc4-1c092abf49c5.png">
-    
-      1. Open command view and select `kurtosis lsp`:
-           `Cmd` + `Shift` + `P` ( to open command palette)
-      2. Search for `Output: Focus on Output View`
-      3. Once the view is open, select `kurtosis_lsp`
-      4. You should see the logs from `starlark-lsp server`
+  1. Open Command Pallete (`Cmd` + `Shift` + `P`)
+  2. Search for `Output: Focus on Output View`
+  3. Once the view is open, select `kurtosis_lsp` and you should see the logs. 
+  4. If you don't see any logs or only see error logs, let me know!
+           
+  #### Example image:   
 
-3. In the `Extension Development Host` window, you should be able to see plugins capabiltites on `.star` files.
+  <img width="1728" alt="Screen Shot 2023-01-19 at 10 19 11 AM" src="https://user-images.githubusercontent.com/15133250/213481201-50d1345a-3b2d-46e6-adc4-1c092abf49c5.png">
 
-## Publish
-//TODO
+## Next Steps
+
+This [document][https://www.notion.so/kurtosistech/Project-IDE-support-for-Starlark-4030246877004e928ecb935a4233ca54] contains more information about the plugin, and lays out some of the next steps.
