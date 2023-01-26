@@ -42,4 +42,4 @@ Please follow the setups outlined below to run kurtosis plugin with starlark cod
 
 ## Next Steps
 
-This [document][https://www.notion.so/kurtosistech/Project-IDE-support-for-Starlark-4030246877004e928ecb935a4233ca54] contains more information about the plugin, and lays out some of the next steps.
+This [document](https://www.notion.so/kurtosistech/Project-IDE-support-for-Starlark-4030246877004e928ecb935a4233ca54) contains more information about the plugin, and lays out some of the next steps.
