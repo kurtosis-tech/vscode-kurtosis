@@ -3,7 +3,7 @@ package server
 import (
 	"context"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 
 	"go.lsp.dev/protocol"
 )

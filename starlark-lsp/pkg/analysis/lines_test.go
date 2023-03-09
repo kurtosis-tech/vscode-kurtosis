@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"go.lsp.dev/protocol"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
 )
 
 func TestLinesInfo(t *testing.T) {

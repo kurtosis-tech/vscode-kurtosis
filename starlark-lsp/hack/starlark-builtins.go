@@ -10,8 +10,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 const SPEC_Bazel = "https://raw.githubusercontent.com/bazelbuild/starlark/master/spec.md"

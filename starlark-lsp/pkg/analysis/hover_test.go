@@ -7,8 +7,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.lsp.dev/protocol"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 func TestBasicHover(t *testing.T) {

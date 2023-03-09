@@ -10,7 +10,7 @@ import (
 
 	sitter "github.com/smacker/go-tree-sitter"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/docstring"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/docstring"
 )
 
 // Functions finds all function definitions that are direct children of the provided sitter.Node.

@@ -15,8 +15,8 @@ import (
 	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 type Builtins struct {

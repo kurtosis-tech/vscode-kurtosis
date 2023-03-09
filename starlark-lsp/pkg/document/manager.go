@@ -11,7 +11,7 @@ import (
 	"go.lsp.dev/protocol"
 	"go.lsp.dev/uri"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 type ManagerOpt func(manager *Manager)

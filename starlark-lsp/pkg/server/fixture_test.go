@@ -20,11 +20,11 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/middleware"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
-	"github.com/tilt-dev/starlark-lsp/pkg/server"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/middleware"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/server"
 )
 
 type fixture struct {

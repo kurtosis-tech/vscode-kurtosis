@@ -6,9 +6,9 @@ import (
 	"go.lsp.dev/jsonrpc2"
 	"go.lsp.dev/protocol"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/middleware"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/middleware"
 )
 
 type Server struct {

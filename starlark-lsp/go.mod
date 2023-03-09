@@ -1,6 +1,6 @@
-module github.com/tilt-dev/starlark-lsp
+module github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp
 
-go 1.19
+go 1.18
 
 require (
 	github.com/davecgh/go-spew v1.1.1

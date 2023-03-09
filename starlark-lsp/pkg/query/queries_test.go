@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 func TestFunctionParameters(t *testing.T) {

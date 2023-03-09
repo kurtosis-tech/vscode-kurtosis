@@ -21,9 +21,9 @@ import (
 	"go.lsp.dev/uri"
 	"go.uber.org/zap/zaptest"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/docstring"
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/docstring"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 const envGetcwd = "environ = {}\ndef getcwd():\n  pass\n"

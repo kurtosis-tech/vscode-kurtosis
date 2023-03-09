@@ -9,7 +9,7 @@ import (
 
 	sitter "github.com/smacker/go-tree-sitter"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/docstring"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/docstring"
 )
 
 // FunctionParameters extracts parameters from a function definition and

@@ -6,8 +6,8 @@ import (
 	sitter "github.com/smacker/go-tree-sitter"
 	"go.lsp.dev/protocol"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 )
 
 func (a *Analyzer) signatureInformation(doc document.Document, node *sitter.Node, args callWithArguments) (query.Signature, bool) {

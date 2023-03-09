@@ -5,7 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/tilt-dev/starlark-lsp/pkg/kurtosis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/kurtosis"
 	"io"
 	"io/fs"
 	"net"
@@ -17,9 +17,9 @@ import (
 	"go.lsp.dev/protocol"
 	"go.uber.org/zap"
 
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
-	"github.com/tilt-dev/starlark-lsp/pkg/document"
-	"github.com/tilt-dev/starlark-lsp/pkg/server"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/document"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/server"
 )
 
 type startCmd struct {
@@ -101,7 +101,7 @@ For socket mode, pass the --address option.
 	cmd.Command.RunE = func(cc *cobra.Command, args []string) error {
 		ctx := cc.Context()
 
-		analyzer, err := createAnalyzer(ctx)
+		analyzer, err := CreateAnalyzer(ctx)
 		if err != nil {
 			return fmt.Errorf("failed to create analyzer: %v", err)
 		}
@@ -211,7 +211,7 @@ func launchHandler(ctx context.Context, cancel context.CancelFunc, conn io.ReadW
 	return nil
 }
 
-func createAnalyzer(ctx context.Context) (*analysis.Analyzer, error) {
+func CreateAnalyzer(ctx context.Context) (*analysis.Analyzer, error) {
 	kurtosisBuiltIn := kurtosis.GetKurtosisBuiltIn(ctx)
 
 	opts := []analysis.AnalyzerOption{

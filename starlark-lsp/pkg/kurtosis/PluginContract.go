@@ -5,8 +5,8 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
-	"github.com/tilt-dev/starlark-lsp/pkg/docstring"
-	"github.com/tilt-dev/starlark-lsp/pkg/query"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/docstring"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/query"
 	"go.uber.org/zap"
 )
 

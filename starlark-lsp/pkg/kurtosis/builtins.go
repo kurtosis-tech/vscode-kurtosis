@@ -2,7 +2,7 @@ package kurtosis
 
 import (
 	"context"
-	"github.com/tilt-dev/starlark-lsp/pkg/analysis"
+	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/analysis"
 	"go.lsp.dev/protocol"
 )
 
