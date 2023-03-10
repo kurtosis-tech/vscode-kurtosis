@@ -5,9 +5,9 @@ go 1.18
 require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/pkg/errors v0.9.1
-	github.com/smacker/go-tree-sitter v0.0.0-20220209044044-0d3022e933c3
+	github.com/smacker/go-tree-sitter v0.0.0-20230226123037-c459dbde1464
 	github.com/spf13/cobra v1.3.0
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.4
 	go.lsp.dev/jsonrpc2 v0.9.0
 	go.lsp.dev/protocol v0.11.2
 	go.lsp.dev/uri v0.3.0
@@ -25,5 +25,5 @@ require (
 	go.lsp.dev/pkg v0.0.0-20210323044036-f7deec69b52e // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

@@ -101,7 +101,7 @@ For socket mode, pass the --address option.
 	cmd.Command.RunE = func(cc *cobra.Command, args []string) error {
 		ctx := cc.Context()
 
-		analyzer, err := CreateAnalyzer(ctx)
+		analyzer, err := createAnalyzer(ctx)
 		if err != nil {
 			return fmt.Errorf("failed to create analyzer: %v", err)
 		}
@@ -135,6 +135,12 @@ func runStdioServer(ctx context.Context, analyzer *analysis.Analyzer) error {
 	}
 
 	return launchHandler(ctx, cancel, stdio, analyzer)
+}
+
+func RunSocketServerWithCtx(ctx context.Context, addr string) error {
+	analyzer, err := createAnalyzer(ctx)
+	err = runSocketServer(ctx, addr, analyzer)
+	return err
 }
 
 func runSocketServer(ctx context.Context, addr string, analyzer *analysis.Analyzer) error {
@@ -211,7 +217,7 @@ func launchHandler(ctx context.Context, cancel context.CancelFunc, conn io.ReadW
 	return nil
 }
 
-func CreateAnalyzer(ctx context.Context) (*analysis.Analyzer, error) {
+func createAnalyzer(ctx context.Context) (*analysis.Analyzer, error) {
 	kurtosisBuiltIn := kurtosis.GetKurtosisBuiltIn(ctx)
 
 	opts := []analysis.AnalyzerOption{
