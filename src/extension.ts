@@ -4,7 +4,6 @@
  * ------------------------------------------------------------------------------------------ */
 
 import { ChildProcess, spawn } from "child_process"
-import { networkInterfaces } from "os";
 
 import { workspace, ExtensionContext } from 'vscode';
 
@@ -47,7 +46,7 @@ export function deactivate(): Thenable<void> | undefined {
 }
 
 async function startServer(): Promise<ChildProcess | StreamInfo> {
-	return spawn("starlark-lsp", ["start","--address=",":8567"])
+	return spawn("kurtosis_lsp", ["start","--address=",":8567"])
 }
 
 

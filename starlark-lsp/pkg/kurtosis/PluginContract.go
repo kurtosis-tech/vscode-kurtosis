@@ -1,7 +1,6 @@
 package kurtosis
 
 import (
-	"context"
 	_ "embed"
 	"encoding/json"
 	"fmt"
@@ -149,12 +148,7 @@ func (definition *PluginBuiltinProvider) convertToLSP() PluginWrapper {
 	}
 }
 
-func (definition *PluginBuiltinProvider) ReadJsonFile(ctx context.Context) {
-	//path, _ := os.Getwd()
-	//pathToKurtosisType := filepath.Join(path, "pkg", "kurtosis", "resource", "kurtosis_type.json")
-
-	// read our opened xmlFile as a byte array.
-
+func (definition *PluginBuiltinProvider) ReadJsonFile() {
 	var pluginBuiltIns PluginBuiltins
 	err := json.Unmarshal(jsonFile, &pluginBuiltIns)
 	if err != nil {

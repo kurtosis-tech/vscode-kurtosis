@@ -33,6 +33,6 @@ function deactivate() {
 }
 exports.deactivate = deactivate;
 async function startServer() {
-    return (0, child_process_1.spawn)("starlark-lsp", ["start", "--address=", ":8567"]);
+    return (0, child_process_1.spawn)("kurtosis_lsp", ["start", "--address=", ":8567"]);
 }
 //# sourceMappingURL=extension.js.map

@@ -13,7 +13,7 @@ func GetKurtosisBuiltIn(ctx context.Context) *analysis.Builtins {
 		logger: logger,
 	}
 
-	provider.ReadJsonFile(ctx)
+	provider.ReadJsonFile()
 	converted := provider.convertToLSP()
 
 	builtIn := analysis.NewBuiltins()
