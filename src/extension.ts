@@ -3,6 +3,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
+//import net = require("net")
 import { ChildProcess, spawn } from "child_process"
 
 import { workspace, ExtensionContext } from 'vscode';
@@ -46,8 +47,8 @@ export function deactivate(): Thenable<void> | undefined {
 }
 
 async function startServer(): Promise<ChildProcess | StreamInfo> {
-	return spawn("kurtosis_lsp", ["start","--address=",":8567"])
+	// const socket = net.connect({ host: "127.0.0.1", port:8484})
+	// return { writer: socket, reader: socket }
+
+	return spawn("kurtosis_lsp", ["start"])
 }
-
-
-

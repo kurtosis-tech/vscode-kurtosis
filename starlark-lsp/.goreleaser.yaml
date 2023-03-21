@@ -18,8 +18,8 @@ builds:
       - arm64
     env:
       - CGO_ENABLED=1
-      - CC=o64h-clang
-      - CXX=o64h-clang++
+      - CC={{ if index .Env "CC_WITH_DEFAULT" }}{{ .Env.CC_WITH_DEFAULT }}{{ else }} clang {{ end }}
+      - CXX={{ if index .Env "CXX_WITH_DEFAULT" }}{{ .Env.CXX_WITH_DEFAULT }}{{ else }} clang++ {{ end }}
     flags:
       - -tags=osusergo
     overrides:

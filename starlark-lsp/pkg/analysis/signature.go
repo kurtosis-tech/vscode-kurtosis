@@ -79,8 +79,14 @@ func (a *Analyzer) SignatureHelp(doc document.Document, pos protocol.Position) *
 	}
 
 	activeParam := uint32(0)
-
-	if args.currentKeyword != "" {
+	if args.currentKeyword == "" {
+		for i, param := range sig.Params {
+			if _, found := args.keywords[param.Name]; !found {
+				activeParam = uint32(i)
+				break
+			}
+		}
+	} else if args.currentKeyword != "" {
 		for i, param := range sig.Params {
 			if param.Name == args.currentKeyword {
 				activeParam = uint32(i)
@@ -94,11 +100,6 @@ func (a *Analyzer) SignatureHelp(doc document.Document, pos protocol.Position) *
 	if activeParam > uint32(len(sig.Params)-1) {
 		activeParam = uint32(len(sig.Params) - 1)
 	}
-	//
-	//a.logger.Info(fmt.Sprintf("%+v", args))
-	//a.logger.Info(fmt.Sprintf("%+v", sig))
-	//a.logger.Info(string(activeParam))
-	//a.logger.Info(sig.Label())
 
 	return &protocol.SignatureHelp{
 		Signatures:      []protocol.SignatureInformation{sig.SignatureInfo()},

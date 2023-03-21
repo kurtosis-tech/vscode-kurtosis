@@ -5,6 +5,7 @@
  * ------------------------------------------------------------------------------------------ */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
+//import net = require("net")
 const child_process_1 = require("child_process");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
@@ -33,6 +34,8 @@ function deactivate() {
 }
 exports.deactivate = deactivate;
 async function startServer() {
-    return (0, child_process_1.spawn)("kurtosis_lsp", ["start", "--address=", ":8567"]);
+    // const socket = net.connect({ host: "127.0.0.1", port:8484})
+    // return { writer: socket, reader: socket }
+    return (0, child_process_1.spawn)("kurtosis_lsp", ["start"]);
 }
 //# sourceMappingURL=extension.js.map

@@ -152,6 +152,7 @@ func (a *Analyzer) completeExpression(doc document.Document, nodes []*sitter.Nod
 // - Add builtins
 func (a *Analyzer) availableSymbols(doc document.Document, nodeAtPoint *sitter.Node, pt sitter.Point) []query.Symbol {
 	symbols := []query.Symbol{}
+
 	if nodeAtPoint != nil {
 		if args := keywordArgContext(doc, nodeAtPoint, pt); args.fnName != "" {
 			if fn, ok := a.signatureInformation(doc, nodeAtPoint, args); ok {
@@ -173,7 +174,6 @@ func (a *Analyzer) availableSymbols(doc document.Document, nodeAtPoint *sitter.N
 			symbols = append(symbols, sym)
 		}
 	}
-
 	return symbols
 }
 
@@ -421,11 +421,6 @@ func (a *Analyzer) FindDefinition(doc document.Document, node *sitter.Node, name
 }
 
 func keywordArgContext(doc document.Document, node *sitter.Node, pt sitter.Point) callWithArguments {
-	if node.Type() == "=" ||
-		query.HasAncestor(node, func(anc *sitter.Node) bool {
-			return anc.Type() == query.NodeTypeKeywordArgument
-		}) {
-		return callWithArguments{}
-	}
-	return possibleCallInfo(doc, node, pt)
+	args := possibleCallInfo(doc, node, pt)
+	return args
 }
