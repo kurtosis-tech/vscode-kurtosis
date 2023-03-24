@@ -19,7 +19,7 @@ import (
 // representing the beginning/ending delimiters, and any number of escape
 // sequences inside. Thus, the string
 //
-//    """hello\nTilted\nWorld"""
+//    """hello\nBolted\nWorld"""
 //
 // gets parsed into a tree like:
 //

@@ -1,11 +1,9 @@
 package cli
 
 import (
-	"bytes"
 	"context"
 	"errors"
 	"fmt"
-	"github.com/kurtosis-tech/vscode-kurtosis/starlark-lsp/pkg/kurtosis"
 	"io"
 	"io/fs"
 	"net"
@@ -51,12 +49,7 @@ type BuiltinFSProvider = func() fs.FS
 var builtinAnalyzerOption BuiltinAnalyzerOptionProvider = nil
 var providedManagerOptions []document.ManagerOpt
 
-// creates a new startCmd
-// params:
-//   commandName: what to call the base command in examples (e.g., "starlark-lsp", "tilt lsp")
-//   builtinFSProvider: provides an fs.FS from which tilt builtin docs should be read
-//                      if nil, a --builtin-paths param will be added for specifying paths
-func newStartCmd(baseCommandName string, builtinFSProvider BuiltinFSProvider, managerOpts ...document.ManagerOpt) *startCmd {
+func newStartCmd(customBuiltIns *analysis.Builtins) *startCmd {
 	cmd := startCmd{
 		Command: &cobra.Command{
 			Use:   "start",
@@ -72,31 +65,15 @@ For socket mode, pass the --address option.
 		},
 	}
 
-	if builtinFSProvider == nil {
-		var builtinDefPaths []string
-		cmd.Flags().StringArrayVar(&builtinDefPaths, "builtin-paths", nil,
-			"Paths to files and directories to parse and treat as additional language builtins")
+	if customBuiltIns != nil {
 		builtinAnalyzerOption = func() analysis.AnalyzerOption {
-			return analysis.WithBuiltinPaths(builtinDefPaths)
+			return analysis.WithStarlarkBuiltinsWithCustomBuiltIn(customBuiltIns)
 		}
 	} else {
 		builtinAnalyzerOption = func() analysis.AnalyzerOption {
-			return analysis.WithBuiltins(builtinFSProvider())
+			return analysis.WithStarlarkBuiltins()
 		}
 	}
-
-	providedManagerOptions = managerOpts
-
-	var example bytes.Buffer
-	p := exampleTemplateParams{
-		BaseCommandName:      baseCommandName,
-		HasBuiltinPathsParam: cmd.Command.Flag("builtin-paths") != nil,
-	}
-	err := exampleTemplate.Execute(&example, p)
-	if err != nil {
-		panic(err)
-	}
-	cmd.Command.Example = example.String()
 
 	cmd.Command.RunE = func(cc *cobra.Command, args []string) error {
 		ctx := cc.Context()
@@ -135,12 +112,6 @@ func runStdioServer(ctx context.Context, analyzer *analysis.Analyzer) error {
 	}
 
 	return launchHandler(ctx, cancel, stdio, analyzer)
-}
-
-func RunSocketServerWithCtx(ctx context.Context, addr string) error {
-	analyzer, err := createAnalyzer(ctx)
-	err = runSocketServer(ctx, addr, analyzer)
-	return err
 }
 
 func runSocketServer(ctx context.Context, addr string, analyzer *analysis.Analyzer) error {
@@ -218,12 +189,5 @@ func launchHandler(ctx context.Context, cancel context.CancelFunc, conn io.ReadW
 }
 
 func createAnalyzer(ctx context.Context) (*analysis.Analyzer, error) {
-	kurtosisBuiltIn := kurtosis.GetKurtosisBuiltIn(ctx)
-
-	opts := []analysis.AnalyzerOption{
-		analysis.WithStarlarkBuiltinsWithCustomBuiltIn(kurtosisBuiltIn),
-		builtinAnalyzerOption(),
-	}
-
-	return analysis.NewAnalyzer(ctx, opts...)
+	return analysis.NewAnalyzer(ctx, builtinAnalyzerOption())
 }

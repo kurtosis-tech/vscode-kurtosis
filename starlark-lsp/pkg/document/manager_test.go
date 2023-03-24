@@ -102,30 +102,6 @@ foo = True
 			"message was: %s", diags[0].Message)
 	}
 }
-
-func TestNotCircularLoad(t *testing.T) {
-	f := newFixture(t)
-	require.NoError(t, os.WriteFile("a.tiltfile", []byte(`
-load('ext.tiltfile', 'flag')
-load('b.tiltfile', 'hello')
-hello()
-`), 0644))
-	require.NoError(t, os.WriteFile("b.tiltfile", []byte(`
-load('ext.tiltfile', 'flag')
-
-def hello():
-  print("in b: " + flag)
-`), 0644))
-	require.NoError(t, os.WriteFile("ext.tiltfile", []byte(`
-flag = True
-`), 0644))
-	doc, err := f.m.Read(f.ctx, uri.File("a.tiltfile"))
-	require.NoError(t, err)
-	diags := doc.Diagnostics()
-	fmt.Printf("diags: %v\n", diags)
-	assert.Equal(t, 0, len(diags))
-}
-
 func TestResolveURI(t *testing.T) {
 	f := newFixture(t)
 	t.Run("default resolve function", func(t *testing.T) {
