@@ -63,15 +63,22 @@ func (a *Analyzer) Completion(doc document.Document, pos protocol.Position) *pro
 
 	names := make([]string, len(symbols))
 	for i, sym := range symbols {
+		if !sym.KType {
+			if sym.Kind != protocol.SymbolKindFunction && sym.Kind != protocol.SymbolKindMethod && sym.Kind != protocol.SymbolKindVariable {
+				continue
+			}
+		}
 		names[i] = sym.Name
+
 		var sortText string
-		if sym.KType {
+		if sym.Kind == protocol.SymbolKindVariable {
 			sortText = fmt.Sprintf("0%s", sym.Name)
-		} else if strings.HasSuffix(sym.Name, "=") {
+		} else if sym.KType {
 			sortText = fmt.Sprintf("1%s", sym.Name)
 		} else {
 			sortText = fmt.Sprintf("2%s", sym.Name)
 		}
+
 		firstDetailLine := strings.SplitN(sym.Detail, "\n", 2)[0]
 		completionList.Items[i] = protocol.CompletionItem{
 			Label:         sym.Name,
@@ -130,18 +137,27 @@ func (a *Analyzer) completeExpression(doc document.Document, nodes []*sitter.Nod
 		length := len(identifiers)
 		lastId := identifiers[length-1]
 		expr := a.findAttrObjectExpression(nodes, sitter.Point{Row: pt.Row, Column: pt.Column - uint32(len(lastId))})
-
 		if expr != nil {
-			symbols = append(symbols, SymbolsStartingWith(a.availableMembers(doc, expr), lastId)...)
-		} else if nodes[len(nodes)-1].String() == "(\".\")" && length >= 2 {
-			//a.logger.Info(fmt.Sprintf("YOLO NEW %+v and curr i %v", nodes[len(nodes)-1].String(), lastId))
-			if identifiers[length-2] != "" {
-				symbols = append(symbols, SymbolsStartingWith(a.builtins.Members, "")...)
+			isItPlanIdentifier := strings.Join(identifiers[:length], "")
+			if strings.Contains(isItPlanIdentifier, "plan") {
+				symbols = append(symbols, SymbolsStartingWith(getOnlyKurtosisSymbols(a.builtins.Members), lastId)...)
+			} else {
+				symbols = append(symbols, SymbolsStartingWith(a.availableMembers(doc, expr), lastId)...)
 			}
 		}
 	}
 
 	return symbols
+}
+
+func getOnlyKurtosisSymbols(symbols []query.Symbol) []query.Symbol {
+	var filteredSymbols []query.Symbol
+	for _, sym := range symbols {
+		if sym.KType {
+			filteredSymbols = append(filteredSymbols, sym)
+		}
+	}
+	return filteredSymbols
 }
 
 // Returns a list of available symbols for completion as follows:
@@ -335,9 +351,10 @@ func (a *Analyzer) findAttrObjectExpression(nodes []*sitter.Node, pt sitter.Poin
 		}
 
 		if expr != nil {
-			a.logger.Info("dot completion",
-				zap.String("dot", dot.String()),
-				zap.String("expr", expr.String()))
+			fmt.Println("dot completion",
+				fmt.Sprintf("dot %v", dot.String()),
+				fmt.Sprintf("expr %v", expr.String()),
+				fmt.Sprintf("type %v", expr.Type()))
 			return expr
 		}
 	}
@@ -389,6 +406,7 @@ func (a *Analyzer) analyzeType(doc document.Document, node *sitter.Node) string 
 }
 
 func (a *Analyzer) availableMembers(doc document.Document, node *sitter.Node) []query.Symbol {
+	fmt.Println(fmt.Sprintf("type of the node %v and %v", node.Type(), node.String()))
 	if t := a.analyzeType(doc, node); t != "" {
 		if class, found := a.builtins.Types[t]; found {
 			return class.Members
@@ -398,7 +416,7 @@ func (a *Analyzer) availableMembers(doc document.Document, node *sitter.Node) []
 			return []query.Symbol{}
 		}
 	}
-	return a.builtins.Members
+	return []query.Symbol{}
 }
 
 func (a *Analyzer) FindDefinition(doc document.Document, node *sitter.Node, name string) (query.Symbol, bool) {
