@@ -105,6 +105,10 @@ def str(x) -> String:
   """`str(x)` formats its argument as a string."""
   pass
 
+def struct() -> Struct:
+  """struct() creates a stalark builtin Struct which is an immutable Starlark type that maps field names to values. It accepts a key/value pair like so: struct(key=value,...)"""
+  pass
+
 def tuple(x):
   """`tuple(x)` returns a tuple containing the elements of the iterable x."""
   pass
@@ -115,6 +119,9 @@ def type(x) -> String:
 
 def zip() -> List:
   """`zip()` returns a new list of n-tuples formed from corresponding elements of each of the n iterable sequences provided as arguments to `zip`.  That is, the first tuple contains the first element of each of the sequences, the second tuple contains the second element of each of the sequences, and so on.  The result list is only as long as the shortest of the input sequences."""
+  pass
+
+class Struct():
   pass
 
 class Dict:
