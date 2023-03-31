@@ -351,10 +351,10 @@ func (a *Analyzer) findAttrObjectExpression(nodes []*sitter.Node, pt sitter.Poin
 		}
 
 		if expr != nil {
-			fmt.Println("dot completion",
-				fmt.Sprintf("dot %v", dot.String()),
-				fmt.Sprintf("expr %v", expr.String()),
-				fmt.Sprintf("type %v", expr.Type()))
+			//fmt.Println("dot completion",
+			//	fmt.Sprintf("dot %v", dot.String()),
+			//	fmt.Sprintf("expr %v", expr.String()),
+			//	fmt.Sprintf("type %v", expr.Type()))
 			return expr
 		}
 	}
@@ -406,7 +406,7 @@ func (a *Analyzer) analyzeType(doc document.Document, node *sitter.Node) string 
 }
 
 func (a *Analyzer) availableMembers(doc document.Document, node *sitter.Node) []query.Symbol {
-	fmt.Println(fmt.Sprintf("type of the node %v and %v", node.Type(), node.String()))
+	//fmt.Println(fmt.Sprintf("type of the node %v and %v", node.Type(), node.String()))
 	if t := a.analyzeType(doc, node); t != "" {
 		if class, found := a.builtins.Types[t]; found {
 			return class.Members
