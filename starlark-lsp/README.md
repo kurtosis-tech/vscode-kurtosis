@@ -4,4 +4,4 @@ It is a language server for Starlark with customized Kurtosis specific intellise
 
 
 ## Acknowledgments
-This `starlark-lsp` was intially forked from [tilt-dev/starlark-lsp](https://github.com/tilt-dev/starlark-lsp) which is licensed as Apache 2.0 liscence. It has been extended to support Kurtosis builtins.
+This `starlark-lsp` was intially forked from [tilt-dev/starlark-lsp](https://github.com/tilt-dev/starlark-lsp) which is licensed as Apache 2.0 license. The `starlark-lsp` has been extended to support Kurtosis built-ins.
