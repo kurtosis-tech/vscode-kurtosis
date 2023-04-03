@@ -21,7 +21,7 @@ function activate(context) {
         }
     };
     // Create the language client and start the client
-    client = new node_1.LanguageClient("kurtosis_lsp", 'kurtosis_lsp', () => startServer(), clientOptions);
+    client = new node_1.LanguageClient("klsp", 'klsp', () => startServer(), clientOptions);
     // Start the client. This will also launch the server
     client.start();
 }

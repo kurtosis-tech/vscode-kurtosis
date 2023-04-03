@@ -1,7 +1,7 @@
 {
-  "name": "kurtosis-plugin",
+  "name": "kurtosis-extension",
   "displayName": "Kurtosis",
-  "description": "",
+  "description": "This is official extension for Starlark based Kurtosis packages",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
@@ -35,18 +35,18 @@
       }
     ],
     "configuration":{
-      "title": "kurtosis-plugin",
+      "title": "kurtosis-extension",
       "properties": {
-        "kurtosis_lsp.trace.server": {
+        "klsp.trace.server": {
           "scope": "window",
           "type": "string",
           "enum": [
             "off",
-            "messages",
+            "debug",
             "verbose"
           ],
           "default": "verbose",
-          "description": "Echoes communication between Visual Studio Code and the language server onto the \"my-awesome-language-server\" output channel."
+          "description": "Echoes communication between Visual Studio Code and the language server onto the \"klsp\" output channel."
         }
       }
     }
