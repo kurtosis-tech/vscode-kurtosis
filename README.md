@@ -4,7 +4,7 @@ The Official Kurtosis Starlark VSCode extension enriches developer experience wh
 
 1. Syntax Highlighting
 2. Auto-completion of Kurtosis defined Starlark instructions and types
-3. Hover functionality
+3. Hover preview for functions 
 4. Method signature suggestions for Kurtosis defined Starlark instructions and types
 
 This extension is currently under continous development and may feel little rough around the edges. There are many exciting capabilites added to this extension in upcoming months; meanwhile if you encounter any issues - please report them using `kurtosis feedback` and we shall incorporate them.
