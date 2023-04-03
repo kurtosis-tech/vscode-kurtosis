@@ -1,7 +1,7 @@
 {
   "name": "kurtosis-extension",
   "displayName": "Kurtosis",
-  "description": "",
+  "description": "This is official extension for Starlark based Kurtosis packages",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
