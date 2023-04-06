@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 
 	"go.lsp.dev/protocol"
 )
@@ -18,6 +19,6 @@ func (s *Server) Completion(ctx context.Context, params *protocol.CompletionPara
 	logger.Debug("completion")
 
 	result := s.analyzer.Completion(doc, params.Position)
-
+	fmt.Printf("Result %+v\n", result)
 	return result, nil
 }

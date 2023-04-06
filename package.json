@@ -60,7 +60,12 @@
           "description": "Echoes communication between Visual Studio Code and the language server onto the \"klsp\" output channel."
         }
       }
-    }
+    },
+    "configurationDefaults": {
+      "[starlark]": {
+          "editor.wordBasedSuggestions": false
+      }
+  }
   },
   "scripts": {
 		"vscode:prepublish": "npm run compile",
