@@ -133,16 +133,20 @@ func (a *Analyzer) completeExpression(doc document.Document, nodes []*sitter.Nod
 		}
 	}
 
+	fmt.Println("PLEASE PRINT AT LEAST")
 	if len(symbols) == 0 {
 		length := len(identifiers)
 		lastId := identifiers[length-1]
 		expr := a.findAttrObjectExpression(nodes, sitter.Point{Row: pt.Row, Column: pt.Column - uint32(len(lastId))})
+
 		if expr != nil {
+			fmt.Println("Called here")
+			fmt.Printf("identifier %+v\n", identifiers)
+			symbols = append(symbols, SymbolsStartingWith(a.availableMembers(doc, expr), lastId)...)
+		} else {
 			isItPlanIdentifier := strings.Join(identifiers[:length], "")
 			if strings.Contains(isItPlanIdentifier, "plan") {
 				symbols = append(symbols, SymbolsStartingWith(getOnlyKurtosisSymbols(a.builtins.Members), lastId)...)
-			} else {
-				symbols = append(symbols, SymbolsStartingWith(a.availableMembers(doc, expr), lastId)...)
 			}
 		}
 	}
