@@ -56,7 +56,7 @@
             "debug",
             "verbose"
           ],
-          "default": "verbose",
+          "default": "off",
           "description": "Echoes communication between Visual Studio Code and the language server onto the \"klsp\" output channel."
         }
       }
