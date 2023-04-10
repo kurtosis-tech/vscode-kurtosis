@@ -2,7 +2,7 @@
   "name": "kurtosis-extension",
   "displayName": "Kurtosis",
   "description": "This is official extension for Starlark based Kurtosis packages",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.74.2"
   },
@@ -45,7 +45,7 @@
         "path": "./syntaxes/starlark.tmLanguage.json"
       }
     ],
-    "configuration":{
+    "configuration": {
       "title": "kurtosis-extension",
       "properties": {
         "klsp.trace.server": {
@@ -63,16 +63,16 @@
     },
     "configurationDefaults": {
       "[starlark]": {
-          "editor.wordBasedSuggestions": false
+        "editor.wordBasedSuggestions": false
       }
-  }
+    }
   },
   "scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b",
-		"watch": "tsc -b -w",
-		"lint": "eslint ./client/src ./server/src --ext .ts,.tsx"
-	},
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx"
+  },
   "devDependencies": {
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.1",
